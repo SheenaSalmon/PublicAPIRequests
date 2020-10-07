@@ -52,7 +52,7 @@ createCard =(users)=>{
 
         card.appendChild(cardImage);
         card.appendChild(cardInfo);
-        console.log(card);
+       // console.log(card);
         gallery.appendChild(card);
         card.addEventListener("click", ()=>{
                 createModal(currentUser);
@@ -61,15 +61,22 @@ createCard =(users)=>{
 
     }
     // gallery.innerHTML=userDom;
-    console.log(typeof users);
+  //  console.log(typeof users);
 }
    
 
     createModal=(user)=>    {
-        let formattedPhone=user.cell.replace(/^\D*(\d{3})\D*(\d{3})\D*(\d+)\D*/,"($1) $2-$3");
-        let modalContent=`<img class="modal-img" src="${user.picture.medium}" alt="profile picture">  <h3 id="name" class="modal-name cap">${user.name.title} ${user.name.first} ${user.name.last}</h3>   <p class="modal-text"> ${user.email}</p> <p class="modal-text cap">${user.location.city}</p><hr><p class="modal-text">${formattedPhone}</p>  <p class="modal-text">${user.location.street.number} ${user.location.street.name}, ${user.location.city}, ${user.location.state} ${user.location.zip}</p><p class="modal-text">Birthday: ${user.dob.date}</p>`;
+        let formattedPhone=user.cell.replace(/\D*/g,"");
+        formattedPhone=formattedPhone.replace(/(\d{3})(\d{3})(\d+)/,"($1) $2-$3" );
 
-       console.log(modalContent);
+        let formatteddate= new Date(user.dob.date);
+        console.log(formatteddate.toLocaleDateString('en-US'));
+        console.log(`this is the cell now:   ${formattedPhone}`)
+       // let cellphone=user.cell.split(" ");
+
+        let modalContent=`<img class="modal-img" src="${user.picture.medium}" alt="profile picture">  <h3 id="name" class="modal-name cap">${user.name.title} ${user.name.first} ${user.name.last}</h3>   <p class="modal-text"> ${user.email}</p> <p class="modal-text cap">${user.location.city}</p><hr><p class="modal-text">${formattedPhone}</p>  <p class="modal-text">${user.location.street.number} ${user.location.street.name}, ${user.location.city}, ${user.location.state} ${user.location.zip}</p><p class="modal-text">Birthday: ${formatteddate.toLocaleDateString('en-US')}</p>`;
+
+       //console.log(modalContent);
     modalInfo.innerHTML=modalContent;
     gallery.appendChild(modalContainer);
     }
