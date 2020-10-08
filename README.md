@@ -6,5 +6,5 @@ The is a project from the Treehouse Techdegree program.  The layout, and html fo
 
 The Random User api does not require registration and does not require an api key.    
 
-##User Changes
+## Changes
 The background was updated to a radial gradient using code from [https://cssgradient.io](https://cssgradient.io/)
