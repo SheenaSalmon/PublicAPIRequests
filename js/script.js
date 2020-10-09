@@ -27,7 +27,7 @@ let allUsers={};
 
 
 
-fetch("https://randomuser.me/api/?results=10").then(res => res.json()).then(data =>createCard(data.results));
+fetch("https://randomuser.me/api/?results=12").then(res => res.json()).then(data =>createCard(data.results));
 
 createCard =(users)=>{
     console.log(users);
